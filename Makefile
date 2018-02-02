@@ -1,7 +1,8 @@
 CC=clang
 CFLAGS=-g `llvm-config --cflags`
 LD=clang++
-LDFLAGS=`llvm-config --cxxflags --ldflags --libs core executionengine jit interpreter analysis native bitwriter --system-libs`
+#LDFLAGS=`llvm-config --cxxflags --ldflags --libs core executionengine jit interpreter analysis native bitwriter --system-libs`
+LDFLAGS=`llvm-config --cxxflags --ldflags --libs core executionengine interpreter analysis native bitwriter --system-libs all`
 
 all: sum
 

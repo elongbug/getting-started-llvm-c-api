@@ -11,6 +11,10 @@
 #include <llvm-c/Target.h>
 #include <llvm-c/Analysis.h>
 #include <llvm-c/BitWriter.h>
+#include <llvm-c/TargetMachine.h>
+#include <llvm-c/Support.h>
+#include <llvm-c/Transforms/Scalar.h>
+#include <llvm/Config/llvm-config.h>
 
 #include <inttypes.h>
 #include <stdio.h>
@@ -36,7 +40,9 @@ int main(int argc, char const *argv[]) {
 
     LLVMExecutionEngineRef engine;
     error = NULL;
-    LLVMLinkInJIT();
+
+    LLVMLinkInMCJIT();
+
     LLVMInitializeNativeTarget();
     if (LLVMCreateExecutionEngineForModule(&engine, mod, &error) != 0) {
         fprintf(stderr, "failed to create execution engine\n");
